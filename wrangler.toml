@@ -1,3 +1,14 @@
 name = "sveltia-cms-auth"
 main = "src/index.js"
 compatibility_date = "2023-03-24"
+
+# `wrangler deploy` replaces the Worker's config with what is declared here, so
+# plaintext Variables set in the dashboard are wiped on the next build. Declare
+# them instead. Neither value is sensitive: an OAuth client ID is public by
+# design (it travels in the authorize URL), and ALLOWED_DOMAINS is our own host.
+#
+# GITHUB_CLIENT_SECRET is deliberately NOT here. Set it in the dashboard as a
+# *Secret* (not a Variable) — secrets are encrypted and survive deploys.
+[vars]
+ALLOWED_DOMAINS = "royal-waterfall-a636.yuriy-781.workers.dev"
+GITHUB_CLIENT_ID = "Ov23liTaJO81cWmhdGOR"
